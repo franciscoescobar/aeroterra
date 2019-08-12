@@ -1,18 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
 import Form from "../Form";
 import BaseMap from "../Map";
-import styled from "styled-components";
-
-const Wrapper = styled.div`
-  display: flex;
-  width: 100%;
-  height: 100vh;
-`;
+import { Wrapper } from "./styled";
 function App() {
+  const [info, setInfo] = useState({
+    name: "",
+    address: "",
+    phone: "",
+    category: "",
+    coordinateX: "",
+    coordinateY: ""
+  });
+  const [submit, setSubmit] = useState(false);
+  const handleTextFieldChange = event => {
+    setInfo({ ...info, [event.target.name]: event.target.value });
+  };
+  const handleSubmit = event => {
+    event.preventDefault();
+    setSubmit(!submit);
+  };
+
+  const addedPoint = () => setSubmit(false);
   return (
     <Wrapper>
-      <Form />
-      <BaseMap />
+      <Form
+        info={info}
+        onTextFieldChange={handleTextFieldChange}
+        onSubmit={handleSubmit}
+      />
+      <BaseMap info={info} onAddedPoint={addedPoint} onSubmit={submit} />
     </Wrapper>
   );
 }
