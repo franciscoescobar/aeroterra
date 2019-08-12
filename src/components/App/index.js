@@ -1,7 +1,8 @@
 import React from "react";
 import Form from "../Form";
-import Map from "../Map";
+import BaseMap from "../Map";
 import styled from "styled-components";
+
 const Wrapper = styled.div`
   display: flex;
   width: 100%;
@@ -11,7 +12,7 @@ function App() {
   return (
     <Wrapper>
       <Form />
-      <Map />
+      <BaseMap />
     </Wrapper>
   );
 }
