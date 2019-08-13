@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/aeroterra/static/css/main.61082469.chunk.css",
+    "main.js": "/aeroterra/static/js/main.fe1fdf3e.chunk.js",
+    "main.js.map": "/aeroterra/static/js/main.fe1fdf3e.chunk.js.map",
+    "runtime~main.js": "/aeroterra/static/js/runtime~main.d9f39eb8.js",
+    "runtime~main.js.map": "/aeroterra/static/js/runtime~main.d9f39eb8.js.map",
+    "static/js/2.e5450529.chunk.js": "/aeroterra/static/js/2.e5450529.chunk.js",
+    "static/js/2.e5450529.chunk.js.map": "/aeroterra/static/js/2.e5450529.chunk.js.map",
+    "index.html": "/aeroterra/index.html",
+    "precache-manifest.bd263263460d6c8e09e1f857734a845c.js": "/aeroterra/precache-manifest.bd263263460d6c8e09e1f857734a845c.js",
+    "service-worker.js": "/aeroterra/service-worker.js",
+    "static/css/main.61082469.chunk.css.map": "/aeroterra/static/css/main.61082469.chunk.css.map"
+  }
+}
