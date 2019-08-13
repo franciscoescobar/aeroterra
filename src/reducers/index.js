@@ -1,30 +1,10 @@
 const INITIAL_DOTS_STATE = (name, address, phone, x, y) => {
   return {
-    geometry: {
-      type: "point",
-      x: Number(x) || 30,
-      y: Number(y) || 50
-    },
-    symbol: {
-      type: "simple-marker",
-      color: [63, 81, 181], // indigo
-      outline: {
-        color: [0, 0, 0], // black
-        width: 1
-      }
-    },
-    attributes: {
-      Address: address || "Av. Libertador 4673",
-      Description: name || "Casa Arturo",
-      CoordinateX: x || "30",
-      CoordinateY: y || "50",
-      Phone: phone
-    },
-    popipTemplate: {
-      title: "{Description}",
-      content:
-        "Dirección: {Address} <br> Teléfono: {Phone} <br>Coordenadas:  X: {CoordinateX} Y:{CoordinateY}"
-    }
+    name: name || "My house",
+    address: address || "Av. Libertador 3134",
+    phone: phone || "549115125864",
+    x: x || 42,
+    y: y || -77
   };
 };
 const INITIAL_STATE = {
@@ -35,10 +15,7 @@ const INITIAL_STATE = {
   coordinateX: "",
   coordinateY: "",
   submit: false,
-  dots: [
-    INITIAL_DOTS_STATE(),
-    INITIAL_DOTS_STATE("algo", "algo", "algo", "30.2", "50")
-  ]
+  dots: []
 };
 
 const rootReducer = (state = INITIAL_STATE, action) => {
@@ -84,6 +61,31 @@ const rootReducer = (state = INITIAL_STATE, action) => {
         coordinateX: "",
         coordinateY: "",
         submit: false
+      };
+    }
+    case "DELETE_DOT": {
+      const { activeDot } = action.payload;
+      const activeDotIndex = state.dots.findIndex(
+        dot => dot.name === activeDot.name
+      );
+      let newState = [];
+      if (activeDotIndex === 0) {
+        newState = state.dots.slice(1, state.dots.length);
+      } else if (activeDotIndex === state.dots.length - 1) {
+        newState = state.dots.slice(0, state.dots.length - 1);
+      } else {
+        const firstHalf = state.dots.slice(0, activeDotIndex);
+        const secondHalf = state.dots.slice(
+          activeDotIndex + 1,
+          state.dots.length
+        );
+
+        newState = firstHalf.concat(secondHalf);
+      }
+
+      return {
+        ...state,
+        dots: newState
       };
     }
     default: {

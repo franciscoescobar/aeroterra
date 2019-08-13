@@ -7,7 +7,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import Select from "@material-ui/core/Select";
 import { StyledForm } from "./styled";
 import { useSelector, useDispatch } from "react-redux";
-import { onInputChange, onSubmit } from "../../actions";
+import { onInputChange, onSubmit, clearForm } from "../../actions";
 const Form = () => {
   const dispatch = useDispatch();
   const info = useSelector(state => state);
@@ -17,6 +17,7 @@ const Form = () => {
   const onFormSubmit = event => {
     event.preventDefault();
     dispatch(onSubmit());
+    dispatch(clearForm());
   };
   return (
     <StyledForm onSubmit={onFormSubmit}>

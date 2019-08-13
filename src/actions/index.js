@@ -20,3 +20,9 @@ export const onMapClick = (x, y) => {
     payload: { x, y }
   };
 };
+export const deleteDot = activeDot => {
+  return {
+    type: "DELETE_DOT",
+    payload: { activeDot }
+  };
+};
